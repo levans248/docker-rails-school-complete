@@ -1,18 +1,28 @@
+# version 2 lets docker know we will be using the 2nd version of the docker compose file format
 version: "2"
 
+# this is where you will configure each container
 services:
+  # this is our rails app container
   app:
+    # build specifies where to find the Dockerfile.  In this case it is in the same directory as the docker-compose.yml file and it has to be named Dockerfile. To specify a file with a different name you will need to use build with context and dockerfile suboptions.
     build: .
     ports: "3000:3000"
+    # docker-compose will automatically look in .env for environment variables.
     env_file: .env
+    # links other services and specifies dependencies in service to determine startup order
     links:
       - db
 
+  # this is our database container
   db:
+    # specifies what image to use to build the container
     image: postgres:9.4
+    # named volume which needs to be specified below in the top value volumes key
     volumes:
       - postgres:/var/lib/postgresql/data
 
+# named volumes need to be specified down here so they are created. In docker compose version 1, these were created automatically if they did not already exist.
 volumes:
   postgres:
 
