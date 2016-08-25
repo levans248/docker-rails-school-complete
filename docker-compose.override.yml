@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  app:
+    volumes:
+      # path on host relative to the compose file. In this case we want the entire app.
+      - .:/rails_app

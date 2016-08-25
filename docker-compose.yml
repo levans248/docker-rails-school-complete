@@ -7,7 +7,10 @@ services:
   app:
     # build specifies where to find the Dockerfile.  In this case it is in the same directory as the docker-compose.yml file and it has to be named Dockerfile. To specify a file with a different name you will need to use build with context and dockerfile suboptions.
     build: .
-    ports: "3000:3000"
+    # start puma server
+    command: bash -c "exec bundle exec rackup -p 3000 -o 0.0.0.0"
+    ports:
+      - "3000:3000"
     # docker-compose will automatically look in .env for environment variables.
     env_file: .env
     # links other services and specifies dependencies in service to determine startup order
