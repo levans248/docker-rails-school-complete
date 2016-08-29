@@ -16,6 +16,5 @@ COPY public public/
 # copy of the nginx configuration file to our container
 COPY config/nginx.conf /etc/nginx/nginx.conf
 
-# start nginx, -g sets global config directive, specify daemon off so that it runs in the
-# foreground and the container does not exit immeadiately.
-CMD [ "nginx", "-g", "daemon off;"]
+# start nginx
+CMD [ "/usr/sbin/nginx" ]
