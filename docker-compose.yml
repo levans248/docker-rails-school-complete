@@ -5,7 +5,10 @@ version: "2"
 services:
   # this is our rails app container
   app:
-    # build specifies where to find the Dockerfile.  In this case it is in the same directory as the docker-compose.yml file and it has to be named Dockerfile. To specify a file with a different name you will need to use build with context and dockerfile suboptions.
+    #  build specifies where to find the Dockerfile.  In this case it is in the same
+    #+ directory as the docker-compose.yml file and it has to be named Dockerfile.
+    #+ To specify a file with a different name you will need to use build with context
+    #+ and dockerfile suboptions.
     build: .
     # start puma server
     command: bash -c "exec bundle exec rackup -p 3000 -o 0.0.0.0"
@@ -41,8 +44,8 @@ services:
 
   # this is the sidekiq container
   sidekiq:
-    # we can use the same dockerfile to build the sidekiq service since we will
-    # use the same files
+    #  we can use the same dockerfile to build the sidekiq service since we will
+    #+ use the same files
     build: .
     # link sidekiq to both the database and redis
     links:
@@ -53,12 +56,12 @@ services:
     env_file: .env
 
   # nginx container
-  web:
-    # this time we need to tell docker-compose where to find the docker file and
-    # what it is called so we use build with context and dockerfile nested options
+  nginx:
+    #  this time we need to tell docker-compose where to find the docker file and
+    #+ what it is called so we use build with context and dockerfile nested options
     build:
-      context: .
-      dockerfile: /config/nginx-Dockerfile
+      context: /config/
+      dockerfile: nginx-Dockerfile
     # link it to the app
     links:
       - app
@@ -67,8 +70,8 @@ services:
       - "80:80"
 
 
-# named volumes need to be specified down here so they are created. In docker
-# compose version 1, these were created automatically if they did not already exist.
+#  named volumes need to be specified down here so they are created. In docker
+#+ compose version 1, these were created automatically if they did not already exist.
 volumes:
   postgres:
   redis:

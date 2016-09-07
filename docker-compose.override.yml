@@ -2,6 +2,11 @@ version: "2"
 
 services:
   app:
+    environment:
+      - RAILS_ENV=development
     volumes:
-      # path on host relative to the compose file. In this case we want the entire app.
       - .:/rails_app
+
+  nginx:
+    volumes_from:
+      - app

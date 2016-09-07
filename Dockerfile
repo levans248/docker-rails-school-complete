@@ -8,13 +8,14 @@ ENV RAILS_ROOT /rails_app
 RUN mkdir -p $RAILS_ROOT/tmp/pids
 # set working directory to rails root
 WORKDIR $RAILS_ROOT
-# copy gemfile over
-COPY Gemfile Gemfile
-# copy gemfile.lock
-COPY Gemfile.lock Gemfile.lock
+# copy over startup.sh file
+COPY config/docker/startup.sh /opt/startup.sh
+# copy over rails files to $RAILS_ROOT
+COPY . .
 # install bundler gem
 RUN gem install bundler
 # run bundle install
 RUN bundle install
-# copy rails app over
-COPY . .
+# run command startup.sh
+CMD [ "/opt/startup.sh" ]
+
