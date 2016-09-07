@@ -10,8 +10,8 @@ services:
     #+ To specify a file with a different name you will need to use build with context
     #+ and dockerfile suboptions.
     build: .
-    # start puma server
-    command: bash -c "exec bundle exec rackup -p 3000 -o 0.0.0.0"
+    # call startup.sh script
+    command: [ "/opt/startup.sh" ]
     expose:
       - "3000"
     # docker-compose will automatically look in .env for environment variables.
@@ -60,8 +60,8 @@ services:
     #  this time we need to tell docker-compose where to find the docker file and
     #+ what it is called so we use build with context and dockerfile nested options
     build:
-      context: /config/
-      dockerfile: nginx-Dockerfile
+      context: .
+      dockerfile: config/docker/nginx-Dockerfile
     # link it to the app
     links:
       - app

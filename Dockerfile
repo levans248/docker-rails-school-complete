@@ -16,6 +16,3 @@ COPY . .
 RUN gem install bundler
 # run bundle install
 RUN bundle install
-# run command startup.sh
-CMD [ "/opt/startup.sh" ]
-
