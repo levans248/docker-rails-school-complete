@@ -11,14 +11,14 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'sidekiq'
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'dotenv-rails'
+  # gem 'dotenv-rails'
 end
 
 group :development do

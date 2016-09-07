@@ -15,4 +15,4 @@ rails db:create
 # run migrations
 rails db:migrate
 
-exec bundle exec -E $RAILS_ENV rackup -p 3000 -o 0.0.0.0
+exec bundle exec rackup -E $RAILS_ENV -p 3000 -o 0.0.0.0

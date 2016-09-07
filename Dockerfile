@@ -2,7 +2,7 @@
 FROM ruby:2.3.1
 # build essential is required to compile debian package and libpq-dev is for postgres
 # node-js is our javascript runtime
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev node-js
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 # set environmental variable
 ENV RAILS_ROOT /rails_app
 # create tmp/pids directory in rails app root folder
