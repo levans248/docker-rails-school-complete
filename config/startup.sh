@@ -7,10 +7,8 @@ bundle install
 # crude way to wait for database container to be ready
 sleep 20
 
-#  create the database and run the migrations; if database is already
-#+ created it will show an error message in the server logs but then
-#+ move on.
-rails db:create
+# will check current database schema version. First time, this will throw an error because the database will not exist. After the error, the database will be created, the schema will be loaded and seeded.
+bin/rails db:version || bundle exec rails db:setup
 
 # run migrations
 rails db:migrate
