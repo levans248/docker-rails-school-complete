@@ -18,5 +18,11 @@ COPY public public/
 # copy of the nginx configuration file to our container
 COPY config/nginx.conf /etc/nginx/nginx.conf
 
+# copy over bash script to update upstream directive
+COPY config/deploy/update_upstream_directive.sh /opt/update_upstream_directive.sh
+
+# copy upstream configuration file
+COPY config/nginx_upstream.conf /etc/nginx/nginx_upstream.conf
+
 # start nginx
 CMD [ "/usr/sbin/nginx" ]
