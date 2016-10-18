@@ -10,6 +10,8 @@ services:
     # To specify a file with a different name you will need to use build with context
     # and dockerfile suboptions.
     build: .
+    environment:
+      - RAILS_ENV=production
     # call startup.sh script
     command: [ "/opt/startup.sh" ]
     expose:
