@@ -4,7 +4,7 @@
 set -e
 
 # crude way to wait for database container to be ready
-echo "Please wait while we allow for the database continer start..."
+echo "Please wait while we allow for the database container start..."
 sleep 20
 
 # will check current database schema version. First time, this will throw an
